@@ -1,0 +1,37 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/detail/detail"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationStyle": "default",
+        "backgroundColor": "#eeeeee",
+        "navigationBarBackgroundColor": "blue",
+        "navigationBarTitleText": "阳澄湖大闸蟹",
+        "navigationBarTextStyle": "black",
+        "backgroundColorBottom": "#000",
+        "backgroundColorTop": "#fff"
+    },
+    "tabBar": {
+        "color": "#987833",
+        "selectedColor": "#266554",
+        "backgroundColor": "#dfdffd",
+        "borderStyle": "white",
+        "list": [{
+                "pagePath": "pages/index/index",
+                "text": "确认订单",
+                "iconPath": "./images/icon-confirm.png"
+            },
+            {
+                "pagePath": "pages/logs/logs",
+                "text": "发票信息"
+            },
+            {
+                "pagePath": "pages/detail/detail",
+                "text": "卡密订单详情"
+            }
+        ]
+    }
+}
