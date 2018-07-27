@@ -7,7 +7,29 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+  <view>{{textTitle}}</view>
+  <view class="array">
+    <view wx:for="{{array}}" wx:key="key">{{item}}</view>
+  </view>
+  <view wx:if="{{today===1}}">周一</view>
+  <view wx:elif="{{today===2}}">周二</view>
+  <view wx:else="{{today===3}}">周三</view>
+  <template name="datr">
+    <view>
+      姓: {{firstName}} 名: {{lastName}}
+    </view>
+  </template>
+  <template is="datr" data="{{...nameA}}"></template>
+  <template is="datr" data="{{...nameB}}"></template>
+  <template is="datr" data="{{...nameC}}"></template>
+  <view bindtap="add">{{count}}</view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
+  <text>hello {{name}}</text>
+  <button bindtap="bindClick">我可以进行点击</button>
+  <wxs src="../../tools.wxs" module="tools" />
+  <view> {{tools.msg}} </view>
+  <view> {{tools.bar(tools.FOO)}} </view>
+  <!-- <image src="{{img}}">做一个测试</image> -->
 </view>
