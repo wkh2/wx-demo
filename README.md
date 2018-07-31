@@ -60,3 +60,60 @@ catchtap 绑定的事件会阻止时间冒泡
  options: {
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
   },
+# wx.request
+wx.request({
+   1 url:'开发这服务器接口api地址',       -string
+   2 data:'请求所需要的参数',   -string/object
+   3 header: '设置请求的header。（注）header不能设置referer'    -object
+   4 method: '请求类型（put post get options）'   -string
+   5 success:(){}'请求成功的一个回调函数'
+   6 fail:(){}  请求失败的一个回调函数
+   7 complete:(){}  请求完成执行的一个回调函数（请求失败还是成功都会执行）
+})
+以上1为必须项，其他根据所需情况进行使用。
+abort()
+request.abort()中断请求任务。
+#
+  var _this = this;
+    var guid = wx.getStorageSync('jdlogin_guid');
+    var lsid = wx.getStorageSync('jdlogin_lsid');
+    wx.request({
+      url: app.loginRequestUrl+'/cgi-bin/wx/wxapp_wxconfirmlogin',
+      data: {
+        wx_token : wxToken
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'cookie': 'guid='+guid+'; lsid='+lsid
+      },
+      success: function(res){
+        var data = res.data;
+        if(!data.err_code){
+          try {
+            wx.setStorageSync('jdlogin_pt_pin', data.pt_pin);
+            wx.setStorageSync('jdlogin_pt_key', data.pt_key);
+            wx.setStorageSync('jdlogin_pt_token', data.pt_token);
+          } catch (e) {
+            //console.log(e);
+          }
+          if (_this.data.returnpage){
+            util.goBack(_this.data);
+          }
+        }else{
+          wx.showModal({
+            content: data.err_msg,
+            showCancel : false,
+            success: function(res) {
+              wx.redirectTo({
+                url: '../login/login?jdlogin=1&returnpage=' + _this.data.returnpage + '&fromPageType=' + _this.data.fromPageType
+              })
+            }
+          });
+        }
+      },
+      fail: function() {
+        // fail
+        console.log('wxlogin fail');
+      }
+    })
