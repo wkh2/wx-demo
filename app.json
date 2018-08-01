@@ -8,7 +8,7 @@
         "backgroundTextStyle": "light",
         "navigationStyle": "default",
         "backgroundColor": "#eeeeee",
-        "navigationBarBackgroundColor": "blue",
+        "navigationBarBackgroundColor": "#dfdffd",
         "navigationBarTitleText": "阳澄湖大闸蟹",
         "navigationBarTextStyle": "black",
         "backgroundColorBottom": "#000",
@@ -19,18 +19,24 @@
         "selectedColor": "#266554",
         "backgroundColor": "#dfdffd",
         "borderStyle": "white",
-        "list": [{
+        "list": [
+            {
                 "pagePath": "pages/index/index",
                 "text": "确认订单",
-                "iconPath": "./images/icon-confirm.png"
+                "iconPath":"/images/icon-confirm.png",
+                "selectedIconPath":"/images/icon-confirm-active.png"
             },
             {
                 "pagePath": "pages/logs/logs",
-                "text": "发票信息"
+                "text": "发票信息",
+                "iconPath": "/images/icon-invice.png",
+                "selectedIconPath":"/images/icon-invice-active.png"
             },
             {
                 "pagePath": "pages/detail/detail",
-                "text": "卡密订单详情"
+                "text": "卡密订单详情",
+                "iconPath": "/images/icon-detail.png",
+                "selectedIconPath":"/images/icon-detail-active.png"
             }
         ]
     }
